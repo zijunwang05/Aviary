@@ -1,0 +1,61 @@
+# Generic T-45 trainer using FLOPS mass and aerodynamics methods.
+# This deck intentionally omits calibration factors, derived outputs, and values that use safe
+# Aviary defaults. The remaining values define the payload, propulsion, geometry, and mission.
+
+# Payload
+aircraft:crew_and_payload:baggage_mass_per_passenger,390,lbm
+aircraft:crew_and_payload:design:num_passengers,2,unitless
+
+# Propulsion and fuel
+aircraft:engine:data_file,models/engines/turbofan_22k.csv,unitless
+aircraft:engine:num_engines,1,unitless
+aircraft:engine:reference_mass,1330,lbm
+aircraft:engine:wing_locations,0.0,unitless
+aircraft:fuel:wing_fuel_fraction,0.4,unitless
+
+# Fuselage and nacelle geometry
+aircraft:fuselage:length,35.6,ft
+aircraft:fuselage:max_height,6,ft
+aircraft:fuselage:max_width,3.5,ft
+aircraft:nacelle:reference_avg_diameter,2.583,ft
+aircraft:nacelle:reference_avg_length,6.392,ft
+
+# Empennage geometry
+aircraft:horizontal_tail:area,47.6,ft**2
+aircraft:horizontal_tail:aspect_ratio,4.8,unitless
+aircraft:horizontal_tail:sweep,30.1,deg
+aircraft:horizontal_tail:taper_ratio,0.327,unitless
+aircraft:horizontal_tail:thickness_to_chord,0.1,unitless
+aircraft:vertical_tail:area,27.9,ft**2
+aircraft:vertical_tail:aspect_ratio,1.4,unitless
+aircraft:vertical_tail:sweep,23.5,deg
+aircraft:vertical_tail:taper_ratio,0.22,unitless
+aircraft:vertical_tail:thickness_to_chord,0.1,unitless
+
+# Wing geometry
+aircraft:wing:area,191,ft**2
+aircraft:wing:control_surface_area_ratio,0.333,unitless
+aircraft:wing:dihedral,0,deg
+aircraft:wing:height,4,ft
+aircraft:wing:max_camber_at_70_semispan,0,unitless
+aircraft:wing:span,30.833,ft
+aircraft:wing:span_efficiency_factor,0.61,unitless
+aircraft:wing:sweep,23.4,deg
+aircraft:wing:taper_ratio,0.3,unitless
+aircraft:wing:thickness_to_chord,0.1,unitless
+aircraft:wing:ultimate_load_factor,10.995,unitless
+
+# System assumptions that do not have physically useful zero defaults
+aircraft:hydraulics:system_pressure,3000,psi
+
+# Design mission
+aircraft:design:max_mach,0.85,unitless
+aircraft:design:gross_mass,12750,lbm
+aircraft:design:range,700,NM
+aircraft:design:cruise_mach,0.8,unitless
+
+# Analysis methods
+settings:equations_of_motion,energy_state
+settings:aerodynamics_method,FLOPS
+settings:mass_method,FLOPS
+settings:problem_type,sizing
